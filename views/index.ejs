@@ -2,29 +2,46 @@
 
 <head>
     <link type="text/css" href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
-    <% for (i=0; i<listTypes.length; i++){%>
-        <div>
-        <a href="/index/<%=listTypes[i].name%>"><%=listTypes[i].name%></a>
-    <form id="<%=listTypes[i].name%>" method="post" action="/listTypes/delete/<%=listTypes[i].name%>">
-        <input type="hidden">
-    </form>
-    <button class='btn btn-primary' onclick='document.getElementById("<%=listTypes[i].name%>").submit()'>Delete</button>
-       
-</div>
+
+    <div class="container">
+        <div class="d-flex flex-row justify-content-center text-center">
+          <div class="w-25">
+            
+          </div>
+          <div class="w-30">
+            <h3>Add a List Type.</h3>
+            <form class='mt-3' action=/listTypes method="POST">
+                <input type="text" name="name">
+                <button>
+                    Submit!
+                </button>
+            </form>
+
+            <% for (i=0; i<listTypes.length; i++){%>
+            <div class='d-flex pb-2 pt-2'>
+                <a class='mr-auto' href="/index/<%=listTypes[i].name%>"><%=listTypes[i].name%></a>
+                <form id="<%=listTypes[i].name%>" method="post" style='display:none' action="/listTypes/delete/<%=listTypes[i].name%>">
+                <input type="hidden">
+                </form>
+            <button class='btn btn-primary btn-sm text-right ml-auto' onclick='document.getElementById("<%=listTypes[i].name%>").submit()'>Delete</button>   
+            </div>
+            <%};%>
+
+         
         
-    <%};%>
+          </div>
+          <div class="w-25">
+           
+          </div>
+        </div>
+      </div>
 
-    Add a List Type
+   
 
-    <form action=/listTypes method="POST">
-        <input type="text" name="name">
-        <button>
-            Submit!
-        </button>
-    </form>
 
 
 </body>

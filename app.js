@@ -42,13 +42,13 @@ app.get('/', function(req, res) {
 });
 
 app.get('/index/:listTypes', function(req, res) {
-  
+  var master = req.params.listTypes;
   wtf = encodeURI(req.params.listTypes);
   masterList = req.params.listTypes;
   console.log(wtf);
   lists.find({wtf: masterList}).toArray(function(err, lists) {
     console.log(wtf);
-    res.render('lists', {lists:lists, wtf:wtf});
+    res.render('lists', {lists:lists, wtf:wtf, master:master});
     
   }); 
 });
@@ -56,9 +56,10 @@ app.get('/index/:listTypes', function(req, res) {
 app.get('/index/:listTypes/:lists', function(req, res) {
     parentList = req.params.lists;
     wtf = req.params.listTypes;
+    master = encodeURI(req.params.listTypes);
   listItems.find({wtf:wtf, parentList:parentList}).toArray(function(err, listItems) {
     parentList = req.params.lists;
-    res.render('listItems', {listItems:listItems});
+    res.render('listItems', {listItems:listItems, parentList:parentList, wtf:wtf});
     
   }); 
 });
