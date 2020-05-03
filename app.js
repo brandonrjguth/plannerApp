@@ -43,12 +43,12 @@ app.get('/', function(req, res) {
 
 app.get('/index/:listTypes', function(req, res) {
   
-  wtf = req.params.listTypes;
+  wtf = encodeURI(req.params.listTypes);
   masterList = req.params.listTypes;
   console.log(wtf);
   lists.find({wtf: masterList}).toArray(function(err, lists) {
     console.log(wtf);
-    res.render('lists', {lists:lists, wtf:masterList});
+    res.render('lists', {lists:lists, wtf:wtf});
     
   }); 
 });
@@ -79,6 +79,11 @@ app.post('/lists', function (req, res) {
 app.post('/listItems', function (req, res) {
   listItems.insertOne({name:req.body.name, wtf:wtf, parentList:parentList});
   res.redirect('/index/' + wtf + '/' + parentList);
+});
+
+app.post('/listTypes/delete/:id', function (req, res) {
+  listTypes.remove({name:req.params.id});
+  res.redirect('/');
 });
 
 //Listen on port.

@@ -9,12 +9,12 @@
    
 
     <% for (i=0; i<lists.length; i++){%>
-        <a href=/index/<%=wtf%>/<%=lists[i].name%>><%=lists[i].name%></a><%
+        <a href=/index/<%=wtf%>/<%=encodeURI(lists[i].name)%>><%=lists[i].name%></a><%
     };%>
 
     Add a List
 
-   
+    
 
     <form action=/lists method="POST">
         <input type="text" name="name">

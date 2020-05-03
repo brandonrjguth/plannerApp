@@ -5,11 +5,17 @@
 </head>
 
 <body>
-
     <% for (i=0; i<listTypes.length; i++){%>
-        <a href="/index/<%=listTypes[i].name%>"><%=listTypes[i].name%></a><%
-    };%>
-
+        <div>
+        <a href="/index/<%=listTypes[i].name%>"><%=listTypes[i].name%></a>
+    <form id="<%=listTypes[i].name%>" method="post" action="/listTypes/delete/<%=listTypes[i].name%>">
+        <input type="hidden">
+    </form>
+    <button class='btn btn-primary' onclick='document.getElementById("<%=listTypes[i].name%>").submit()'>Delete</button>
+       
+</div>
+        
+    <%};%>
 
     Add a List Type
 
