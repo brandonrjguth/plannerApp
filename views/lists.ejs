@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <link type="text/css" href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+   
+
+    <% for (i=0; i<lists.length; i++){%>
+        <a href=/index/<%=wtf%>/<%=lists[i].name%>><%=lists[i].name%></a><%
+    };%>
+
+    Add a List
+
+   
+
+    <form action=/lists method="POST">
+        <input type="text" name="name">
+        <button>
+            Submit!
+        </button>
+    </form>
+
+
+</body>
+
+
+</html>

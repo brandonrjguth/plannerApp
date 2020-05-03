@@ -5,14 +5,22 @@
 </head>
 
 <body>
-    THIS IS A TEST
 
-    <form action=/testButton method="POST">
-        <input type="text" name="input">
+    <% for (i=0; i<listTypes.length; i++){%>
+        <a href="/index/<%=listTypes[i].name%>"><%=listTypes[i].name%></a><%
+    };%>
+
+
+    Add a List Type
+
+    <form action=/listTypes method="POST">
+        <input type="text" name="name">
         <button>
-            TEST BUTTON CLICKY CLICK
+            Submit!
         </button>
     </form>
+
+
 </body>
 
 

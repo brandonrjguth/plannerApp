@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <link type="text/css" href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+   
+
+    <% for (i=0; i<listItems.length; i++){%>
+        <li><%=listItems[i].name%></li><%
+    };%>
+
+    Add a List Item
+
+   
+
+    <form action=/listItems method="POST">
+        <input type="text" name="name" id=1s>
+        <button>
+            Submit!
+        </button>
+    </form>
+<!--
+    Add a List, to Big Lists!
+    <form action=/addList method="POST">
+        <input type="text" name="input">
+        <button>
+            Submit!
+        </button>
+    </form>
+
+    Add a item, to big list 2!
+    <form action=/addListItem method="POST">
+        <input type="text" name="input">
+        <button>
+            Submit!
+        </button>
+    </form> -->
+
+
+</body>
+
+
+</html>
