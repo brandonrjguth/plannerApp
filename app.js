@@ -36,6 +36,10 @@ client.connect(function(err) {
 
 //Main Page lists the List Types, allows for addition
 app.get('/', function(req, res) {
+    res.redirect('/index');
+});
+
+app.get('/index', function(req, res) {
   listTypes.find().toArray(function(err, listTypes) {
     res.render('index', {listTypes:listTypes});
   });
@@ -84,11 +88,14 @@ app.post('/listItems', function (req, res) {
 
 app.post('/listTypes/delete/:id', function (req, res) {
   listTypes.remove({name:req.params.id});
+  lists.remove({wtf:req.params.id});
+  listItems.remove({wtf:req.params.id});
   res.redirect('/');
 });
 
 app.post('/lists/delete/:id', function (req, res) {
   lists.remove({name:req.params.id});
+  listItems.remove({parentList:req.params.id});
   res.redirect('/index/' + masterList);
 });
 
