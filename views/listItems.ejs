@@ -9,7 +9,16 @@
    
 
     <% for (i=0; i<listItems.length; i++){%>
-        <li><%=listItems[i].name%></li><%
+        <li id=<%=listItems[i].name%>><%=listItems[i].name%></li>
+        <form id="<%=listItems[i].name%>1" method="post" action="/listItems/delete/<%=listItems[i].name%>">
+            <input type="hidden">
+        </form>
+        <button class='btn btn-primary' onclick='document.getElementById("<%=listItems[i].name%>1").submit()'>Delete</button>
+        <button class='btn btn-primary' onclick='document.getElementById("<%=listItems[i].name%>").style.setProperty("text-decoration", "line-through");'>Finish</button>
+           
+    </div>
+        
+        <%
     };%>
 
     Add a List Item

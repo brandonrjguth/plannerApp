@@ -86,6 +86,16 @@ app.post('/listTypes/delete/:id', function (req, res) {
   res.redirect('/');
 });
 
+app.post('/lists/delete/:id', function (req, res) {
+  lists.remove({name:req.params.id});
+  res.redirect('/index/' + masterList);
+});
+
+app.post('/listItems/delete/:id', function (req, res) {
+  listItems.remove({name:req.params.id});
+  res.redirect('/index/' + wtf + '/' + parentList);
+});
+
 //Listen on port.
 app.listen(port, function() {
     console.log("Listening on port 80");
